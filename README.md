@@ -3,18 +3,18 @@ O projeto foi desenvilvido em Laravel em um ambiente windows, caso necessário r
 ## Build e Subir o Projeto no Docker:
 docker-compose up --build
 
-Acessar o Container do Laravel:
+## Acessar o Container do Laravel:
 docker exec -it laravel_app bash
 
-Instalar Dependências (se necessário):
+## Instalar Dependências (se necessário):
 composer install
 
-Rodar as Migrations:
+## Rodar as Migrations:
 php artisan migrate
 
-Rodar os Testes:
+## Rodar os Testes:
 php artisan test
 
-Configurar Permissões de Pastas: Caso ocorra algum erro de permissão, você pode ajustar as permissões com os seguintes comandos:
+## Configurar Permissões de Pastas: Caso ocorra algum erro de permissão, você pode ajustar as permissões com os seguintes comandos:
 chmod -R 775 storage
 chmod -R 775 bootstrap/cache
