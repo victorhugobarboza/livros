@@ -1,6 +1,6 @@
 O projeto foi desenvilvido em Laravel em um ambiente windows, caso necessário rodar em linux ou MAC verifique os comandos compativeis com os mencionados abaixo:
 
-## Build e Subir o Projeto no Docker:
+## Build e Subir o Projeto no Docker (na raiz do projeto):
 docker-compose up --build
 
 ## Acessar o Container do Laravel:
