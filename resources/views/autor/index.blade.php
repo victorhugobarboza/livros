@@ -4,8 +4,7 @@
 <div class="container mt-4">
     <div class="row mb-4">
         <div class="col-md-12 d-flex justify-content-between align-items-center">
-            <h2>Lista de Autores</h2>
-            <!-- Botão para adicionar novo autor -->
+            <h2>Lista de Autores</h2>           
             <a href="{{ route('autor.create') }}" class="btn btn-primary">Inserir Novo Autor</a>
         </div>
     </div>
@@ -23,11 +22,9 @@
                     @foreach($autores as $autor)
                         <tr>                            
                             <td>{{ $autor->Nome }}</td>
-                            <td>
-                                <!-- Botão de editar -->
-                                <a href="{{ route('autor.edit', $autor->CodAu) }}" class="btn btn-warning btn-sm">Editar</a>
+                            <td>                              
+                                <a href="{{ route('autor.edit', $autor->CodAu) }}" class="btn btn-warning btn-sm">Editar</a>                                
                                 
-                                <!-- Botão de excluir -->
                                 <form action="{{ route('autor.destroy', $autor->CodAu) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')

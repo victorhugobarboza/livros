@@ -11,8 +11,7 @@ class Autor extends Model
 
     protected $table = 'autores';
     protected $primaryKey = 'CodAu';
-
-      // Definir os campos que podem ser atribuídos em massa
+     
       protected $fillable = [
         'nome'       
     ];

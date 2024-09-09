@@ -9,12 +9,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 </head>
-<body>    
-    <!-- Sidebar -->
+<body> 
     <nav id="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('livros.index') }}">Livros</a>
@@ -50,8 +49,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    @endif
-    <!-- Conteúdo principal -->
+    @endif    
     <div class="content">
         @yield('content')
     </div>
@@ -61,12 +59,11 @@
     <!-- jQuery Mask Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
-    $(document).ready(function(){
-        // O tempo está configurado para 5 segundos (5000 milissegundos)
+    $(document).ready(function(){        
         setTimeout(function() {
             $("#success-alert").fadeOut('slow');
             $("#error-alert").fadeOut('slow');
-        }, 5000); // 5000ms = 5 segundos
+        }, 5000);
     });
 </script>
 </body>

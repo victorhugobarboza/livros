@@ -2,10 +2,8 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-center">Dashboard</h1>
-    
-    <div class="row">
-        <!-- Card para Livros -->
+    <h1 class="text-center">Gerenciador de Livros</h1>    
+    <div class="row">        
         <div class="col-md-4">
             <div class="card text-center">
                 <div class="card-body">
@@ -14,9 +12,7 @@
                     <a href="{{ route('livros.index') }}" class="btn btn-primary">Ver Livros</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Card para Autores -->
+        </div>        
         <div class="col-md-4">
             <div class="card text-center">
                 <div class="card-body">
@@ -25,9 +21,7 @@
                     <a href="{{ route('autor.index') }}" class="btn btn-success">Ver Autores</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Card para Assuntos -->
+        </div>        
         <div class="col-md-4">
             <div class="card text-center">
                 <div class="card-body">

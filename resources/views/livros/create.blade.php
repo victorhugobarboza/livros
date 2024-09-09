@@ -47,10 +47,8 @@
     </form>
 </div>
 
-<!-- Inclua o jQuery aqui, antes do script da máscara -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Script para aplicar a máscara -->
 <script>
     $(document).ready(function(){
         $('#valor').mask('000.000.000.000.000,00', {reverse: true});
