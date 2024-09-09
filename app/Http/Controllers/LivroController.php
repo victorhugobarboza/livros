@@ -51,16 +51,19 @@ class LivroController extends Controller
             'anoPublicacao' => $request->anoPublicacao,
         ]);
 
-        $livro->autores()->attach($request->autor);
+        $livro->autores()->attach($request->autor, ['status' => 1]);
     
-        $livro->assuntos()->attach($request->assunto);
+        $livro->assuntos()->attach($request->assunto, ['status' => 1]);
     
         return redirect()->route('livros.index')->with('success', 'Livro inserido com sucesso!');
     }
     
     public function edit(Livro $livro)
-    {
-        return view('livros.edit', compact('livro')); 
+    {       
+        $autores = Autor::all();
+        $assuntos = Assunto::all();        
+        
+        return view('livros.edit', compact('livro', 'autores', 'assuntos'));
     }
     
     public function update(Request $request, Livro $livro)
@@ -69,19 +72,40 @@ class LivroController extends Controller
             'titulo' => 'required',
             'editora' => 'required',
             'edicao' => 'required|integer',
-            'ano_publicacao' => 'required|digits:4',
+            'anoPublicacao' => 'required|digits:4',
+            'autor' => 'required|integer',
+            'assunto' => 'required|integer',
         ]);
     
-        $livro->update($request->all());
+        // Atualizar os detalhes do livro
+        $livro->update([
+            'titulo' => $request->titulo,
+            'editora' => $request->editora,
+            'edicao' => $request->edicao,
+            'anoPublicacao' => $request->anoPublicacao,
+        ]);
+    
+        // Atualizar ou criar o vínculo de autores (removendo os antigos e mantendo o atual ativo)
+        $livro->autores()->sync([$request->autor => ['status' => 1]]);
+    
+        // Atualizar ou criar o vínculo de assuntos (removendo os antigos e mantendo o atual ativo)
+        $livro->assuntos()->sync([$request->assunto => ['status' => 1]]);
     
         return redirect()->route('livros.index')->with('success', 'Livro atualizado com sucesso!');
     }
     
+    
     public function destroy(Livro $livro)
     {
+        // Marcar os vínculos atuais como inativos
+        $livro->autores()->updateExistingPivot($livro->autores->pluck('CodAu'), ['status' => 0]);
+        $livro->assuntos()->updateExistingPivot($livro->assuntos->pluck('codAs'), ['status' => 0]);
+
+        // Excluir o livro (ou apenas inativar o livro, se for necessário)
         $livro->delete();
-    
+
         return redirect()->route('livros.index')->with('success', 'Livro excluído com sucesso!');
     }
+
     
 }

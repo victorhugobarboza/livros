@@ -1,0 +1,61 @@
+ /* Estilos para a Sidebar */
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #343a40;
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #343a40;
+    text-align: center;
+}
+#sidebar ul.components {
+    padding: 0;
+    list-style: none;
+}
+#sidebar ul li {
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a {
+    color: #ddd;
+    display: block;
+    text-decoration: none;
+}
+#sidebar ul li a:hover {
+    color: #fff;
+    background: #495057;
+    text-decoration: none;
+}
+#content {
+    width: 100%;
+    padding: 20px;
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+        position: relative;
+    }
+    #sidebar .sidebar-header {
+        text-align: left;
+    }
+    .wrapper {
+        flex-direction: column;
+    }
+}

@@ -22,8 +22,7 @@
             <label for="ano_publicacao">Ano de Publicação</label>
             <input type="number" class="form-control" id="ano_publicacao" name="anoPublicacao" required>
         </div>
-
-        <!-- Select para Autores -->
+        
         <div class="form-group">
             <label for="autor">Autor</label>
             <select name="autor" id="autor" class="form-control" required>
@@ -32,8 +31,7 @@
                 @endforeach
             </select>
         </div>
-
-        <!-- Select para Assuntos -->
+        
         <div class="form-group">
             <label for="assunto">Assunto</label>
             <select name="assunto" id="assunto" class="form-control" required>
