@@ -34,27 +34,30 @@ class LivroController extends Controller
     }    
 
     public function store(Request $request)
-    {
+    {        
         $request->validate([
             'titulo' => 'required',
             'editora' => 'required',
             'edicao' => 'required|integer',
             'anoPublicacao' => 'required|digits:4',
+            'valor' => 'required',
             'autor' => 'required|integer',
             'assunto' => 'required|integer',
-        ]);
+        ]);    
+        
+        $valorConvertido = str_replace(',', '.', str_replace('.', '', $request->valor));        
     
         $livro = Livro::create([
             'titulo' => $request->titulo,
             'editora' => $request->editora,
             'edicao' => $request->edicao,
             'anoPublicacao' => $request->anoPublicacao,
+            'valor' => $valorConvertido, 
         ]);
 
         $livro->autores()->attach($request->autor, ['status' => 1]);
-    
         $livro->assuntos()->attach($request->assunto, ['status' => 1]);
-    
+
         return redirect()->route('livros.index')->with('success', 'Livro inserido com sucesso!');
     }
     
@@ -71,24 +74,25 @@ class LivroController extends Controller
         $request->validate([
             'titulo' => 'required',
             'editora' => 'required',
-            'edicao' => 'required|integer',
+            'edicao' => 'required|integer',            
             'anoPublicacao' => 'required|digits:4',
+            'valor' => 'required',
             'autor' => 'required|integer',
             'assunto' => 'required|integer',
-        ]);
-    
-        // Atualizar os detalhes do livro
+        ]);   
+            
+        $valorConvertido = str_replace(',', '.', str_replace('.', '', $request->valor));    
+        
         $livro->update([
             'titulo' => $request->titulo,
             'editora' => $request->editora,
             'edicao' => $request->edicao,
             'anoPublicacao' => $request->anoPublicacao,
-        ]);
-    
-        // Atualizar ou criar o vínculo de autores (removendo os antigos e mantendo o atual ativo)
-        $livro->autores()->sync([$request->autor => ['status' => 1]]);
-    
-        // Atualizar ou criar o vínculo de assuntos (removendo os antigos e mantendo o atual ativo)
+            'valor' => $valorConvertido, 
+        ]);  
+        
+        $livro->autores()->sync([$request->autor => ['status' => 1]]);    
+       
         $livro->assuntos()->sync([$request->assunto => ['status' => 1]]);
     
         return redirect()->route('livros.index')->with('success', 'Livro atualizado com sucesso!');
@@ -96,12 +100,10 @@ class LivroController extends Controller
     
     
     public function destroy(Livro $livro)
-    {
-        // Marcar os vínculos atuais como inativos
+    {        
         $livro->autores()->updateExistingPivot($livro->autores->pluck('CodAu'), ['status' => 0]);
         $livro->assuntos()->updateExistingPivot($livro->assuntos->pluck('codAs'), ['status' => 0]);
-
-        // Excluir o livro (ou apenas inativar o livro, se for necessário)
+        
         $livro->delete();
 
         return redirect()->route('livros.index')->with('success', 'Livro excluído com sucesso!');

@@ -18,7 +18,8 @@ class Livro extends Model
         'titulo', 
         'editora',
         'edicao', 
-        'anoPublicacao'
+        'anoPublicacao',
+        'valor'
     ];
 
     // Relacionamento muitos para muitos com o modelo Autor

@@ -18,6 +18,7 @@
                         <th>Editora</th>
                         <th>Edição</th>
                         <th>Ano de Publicação</th>
+                        <th>Valor (R$)</th>
                         <th>Autor</th>
                         <th>Assunto</th>
                         <th>Ações</th>
@@ -30,15 +31,12 @@
                             <td>{{ $livro->Editora }}</td>
                             <td>{{ $livro->Edicao }}</td>
                             <td>{{ $livro->AnoPublicacao }}</td>
-                            
-                            <!-- Exibir o(s) autor(es) -->
+                            <td>{{ $livro->valor }}</td>                            
                             <td>
                                 @foreach($livro->autores as $autor)
                                     {{ $autor->Nome }}<br>
                                 @endforeach
-                            </td>
-                            
-                            <!-- Exibir o(s) assunto(s) -->
+                            </td>   
                             <td>
                                 @foreach($livro->assuntos as $assunto)
                                     {{ $assunto->Descricao }}<br>

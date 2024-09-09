@@ -9,8 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 </head>
-<body>
-
+<body>    
     <!-- Sidebar -->
     <nav id="sidebar">
         <ul class="nav flex-column">
@@ -26,16 +25,49 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('assunto.index') }}">Assuntos</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('relatorio.livros_autores') }}">Relatório</a>
+            </li>
         </ul>
     </nav>
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <!-- Conteúdo principal -->
     <div class="content">
         @yield('content')
     </div>
-
     <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>    
+    <!-- jQuery Mask Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        // O tempo está configurado para 5 segundos (5000 milissegundos)
+        setTimeout(function() {
+            $("#success-alert").fadeOut('slow');
+            $("#error-alert").fadeOut('slow');
+        }, 5000); // 5000ms = 5 segundos
+    });
+</script>
 </body>
 </html>

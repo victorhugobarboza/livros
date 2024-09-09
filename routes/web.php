@@ -3,6 +3,7 @@
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\AssuntoController;
+use App\Http\Controllers\RelatorioController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -11,10 +12,5 @@ Route::get('/', function () {
 Route::resource('livros', LivroController::class);
 Route::resource('autor', AutorController::class);
 Route::resource('assunto', AssuntoController::class);
+Route::get('/relatorio/livros-autores', [RelatorioController::class, 'gerarRelatorio'])->name('relatorio.livros_autores');
 
-// Rota para relatórios
-Route::get('relatorios/livros-por-autor', [LivroController::class, 'relatorio'])->name('relatorios.livros-por-autor');
-
-//Route::get('/', function () {
-    //return view('welcome');
-//});
