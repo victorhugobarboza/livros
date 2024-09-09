@@ -1,4 +1,4 @@
-O projeto foi desenvilvido em Laravel em um ambiente windows, caso necessário rodar em linux ou MAC verifique os comandos compativeis com os mencionados abaixo:
+O projeto foi desenvilvido em Laravel em um ambiente windows com docker, caso necessário rodar em linux ou MAC verifique os comandos compativeis com os mencionados abaixo:
 
 ## Build e Subir o Projeto no Docker (na raiz do projeto):
 docker-compose up --build
