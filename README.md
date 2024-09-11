@@ -16,5 +16,6 @@ php artisan migrate
 php artisan test
 
 ## Configurar Permissões de Pastas: Caso ocorra algum erro de permissão, você pode ajustar as permissões com os seguintes comandos:
-chmod -R 775 storage
-chmod -R 775 bootstrap/cache
+ chmod -R 775 storage
+ 
+ chmod -R 775 bootstrap/cache
