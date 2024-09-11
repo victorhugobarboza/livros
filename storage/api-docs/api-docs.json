@@ -1,0 +1,69 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Relatorio",
+        "description": "Documentação da API de Relatorio",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/assunto": {
+            "get": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Lista todos os assuntos",
+                "description": "Retorna a lista de todos os assuntos",
+                "operationId": "01f859a4a1dbbf1d412a123e8ab52782",
+                "responses": {
+                    "200": {
+                        "description": "Lista de assuntos obtida com sucesso"
+                    }
+                }
+            }
+        },
+        "/autor": {
+            "get": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Lista todos os autores",
+                "description": "Retorna a lista de todos os autores",
+                "operationId": "293315e34d967ac4710c4d99ebaa0d7e",
+                "responses": {
+                    "200": {
+                        "description": "Lista de autores obtida com sucesso"
+                    }
+                }
+            }
+        },
+        "/livros": {
+            "get": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Lista todos os livros",
+                "description": "Retorna a lista de todos os livros",
+                "operationId": "c2638f778b25c161b5b8189172216b67",
+                "responses": {
+                    "200": {
+                        "description": "Lista de livros obtida com sucesso"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Assunto",
+            "description": "Operações sobre assunto"
+        },
+        {
+            "name": "Autor",
+            "description": "Operações sobre autor"
+        },
+        {
+            "name": "Livros",
+            "description": "Operações sobre livros"
+        }
+    ]
+}

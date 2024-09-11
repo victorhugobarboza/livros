@@ -5,12 +5,42 @@ namespace App\Http\Controllers;
 use App\Models\Autor;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Info(
+ *    title="API de Autor",
+ *    version="1.0.0",
+ *    description="Documentação da API de Autor"
+ * )
+ */
+
+/**
+ * Class AutorController
+ * 
+ * @OA\Tag(
+ *     name="Autor",
+ *     description="Operações sobre autor"
+ * )
+ */
+
 class AutorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     */
+
+       /**
+     * @OA\Get(
+     *     path="/autor",
+     *     tags={"Autor"},
+     *     summary="Lista todos os autores",
+     *     description="Retorna a lista de todos os autores",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de autores obtida com sucesso"
+     *     )
+     * )
      */
     public function index()
     {

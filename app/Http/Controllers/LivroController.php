@@ -7,12 +7,42 @@ use App\Models\Autor;
 
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Info(
+ *    title="API de Livros",
+ *    version="1.0.0",
+ *    description="Documentação da API de Livros"
+ * )
+ */
+
+/**
+ * Class LivroController
+ * 
+ * @OA\Tag(
+ *     name="Livros",
+ *     description="Operações sobre livros"
+ * )
+ */
+
 class LivroController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     */
+
+     /**
+     * @OA\Get(
+     *     path="/livros",
+     *     tags={"Livros"},
+     *     summary="Lista todos os livros",
+     *     description="Retorna a lista de todos os livros",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de livros obtida com sucesso"
+     *     )
+     * )
      */
     public function index()
     {        

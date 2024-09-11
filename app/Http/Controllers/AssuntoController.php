@@ -6,12 +6,42 @@ use App\Models\Assunto;
 
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Info(
+ *    title="API de Assuntos",
+ *    version="1.0.0",
+ *    description="Documentação da API de Livros"
+ * )
+ */
+
+/**
+ * Class AssuntoController
+ * 
+ * @OA\Tag(
+ *     name="Assunto",
+ *     description="Operações sobre assunto"
+ * )
+ */
+
 class AssuntoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * @OA\Get(
+     *     path="/assunto",
+     *     tags={"Assunto"},
+     *     summary="Lista todos os assuntos",
+     *     description="Retorna a lista de todos os assuntos",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de assuntos obtida com sucesso"
+     *     )
+     * )
      */
     public function index()
     {        
