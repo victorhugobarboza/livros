@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{ route('assunto.index') }}">Assuntos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('relatorio.livros_autores') }}">Relatório</a>
+                <a class="nav-link" href="{{ route('relatorios.index') }}">Relatórios</a>
             </li>
         </ul>
     </nav>
@@ -37,7 +37,14 @@
             </button>
         </div>
     @endif
-
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-alert">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-alert">
             <ul>
@@ -49,7 +56,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    @endif    
+    @endif   
     <div class="content">
         @yield('content')
     </div>

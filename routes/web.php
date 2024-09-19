@@ -12,5 +12,11 @@ Route::get('/', function () {
 Route::resource('livros', LivroController::class);
 Route::resource('autor', AutorController::class);
 Route::resource('assunto', AssuntoController::class);
-Route::get('/relatorio/livros-autores', [RelatorioController::class, 'gerarRelatorio'])->name('relatorio.livros_autores');
+// Rota para a tela de relatórios
+Route::get('/relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
+
+// Rotas para gerar os relatórios em PDF
+Route::get('/relatorios/livros-autores', [RelatorioController::class, 'getRelatorioLivroAutor'])->name('relatorio.getRelatorioLivroAutor');
+Route::get('/relatorios/livros-assuntos', [RelatorioController::class, 'getRelatorioLivroAssunto'])->name('relatorio.getRelatorioLivroAssunto');
+Route::get('/relatorios/livros-ativos', [RelatorioController::class, 'getRelatorioLivrosAtivos'])->name('relatorio.livros_ativos');
 

@@ -13,11 +13,23 @@ class Assunto extends Model
     protected $primaryKey = 'codAs';
 
     protected $fillable = [
-        'descricao'       
+        'descricao',
+        'status'       
     ];
+
+    public function scopeAtivo($query)
+    {
+        return $query->where('status', 1);
+    }
 
     public function livros()
     {
         return $this->belongsToMany(Livro::class, 'livro_assunto', 'Assunto_codAs', 'Livro_CodL');
+    }
+
+    public function delete()
+    {        
+        $this->status = 0;
+        return $this->save();
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Livro;
 use App\Models\Assunto;
 use App\Models\Autor;
-
 use Illuminate\Http\Request;
 
 /**
@@ -46,7 +46,7 @@ class LivroController extends Controller
      */
     public function index()
     {        
-        $livros = Livro::with('autores', 'assuntos')->get();       
+        $livros = Livro::with('autores', 'assuntos')->where('status', 1)->get();      
        
         return view('livros.index', compact('livros'));
     }
@@ -58,8 +58,8 @@ class LivroController extends Controller
      */
     public function create()
     {
-        $assuntos = Assunto::all();
-        $autores = Autor::all();
+        $assuntos = Assunto::ativo()->get(); 
+        $autores = Autor::ativo()->get(); 
         return view('livros.create', compact('assuntos', 'autores'));
     }    
 
@@ -137,7 +137,5 @@ class LivroController extends Controller
         $livro->delete();
 
         return redirect()->route('livros.index')->with('success', 'Livro excluído com sucesso!');
-    }
-
-    
+    }    
 }

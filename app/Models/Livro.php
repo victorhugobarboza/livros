@@ -17,8 +17,14 @@ class Livro extends Model
         'editora',
         'edicao', 
         'anoPublicacao',
-        'valor'
+        'valor',
+        'status'
     ];
+
+    public function scopeAtivo($query)
+    {
+        return $query->where('status', 1);
+    }
     
     public function autores()
     {
@@ -28,5 +34,11 @@ class Livro extends Model
     public function assuntos()
     {
         return $this->belongsToMany(Assunto::class, 'livro_assunto', 'Livro_CodL', 'Assunto_codAs');
+    }
+
+    public function delete()
+    {        
+        $this->status = 0;
+        return $this->save();
     }
 }

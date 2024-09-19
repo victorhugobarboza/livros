@@ -44,7 +44,7 @@ class AutorController extends Controller
      */
     public function index()
     {
-        $autores = Autor::all();
+        $autores = Autor::ativo()->get();
         return view('autor.index', compact('autores'));
     }
 
@@ -89,8 +89,14 @@ class AutorController extends Controller
     }
 
     public function destroy(Autor $autor)
-    {
+    {             
+        if ($autor->livros()->where('livros.status', 1)->exists()) {
+            return redirect()->route('autor.index')
+                ->with('error', 'Não é possível excluir o autor, pois ele está vinculado a um ou mais livros cadastrados.');
+        }
+
         $autor->delete();
+
         return redirect()->route('autor.index')->with('success', 'Autor deletado com sucesso.');
     }
 }

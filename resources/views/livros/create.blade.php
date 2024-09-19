@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="ano_publicacao">Ano de Publicação</label>
-            <input type="number" class="form-control" id="ano_publicacao" name="anoPublicacao" required>
+            <input type="number" class="form-control" id="ano_publicacao" name="anoPublicacao" required maxlength="4" oninput="this.value = this.value.slice(0, 4);">
         </div>   
         <div class="form-group">
             <label for="valor">Valor (R$)</label>

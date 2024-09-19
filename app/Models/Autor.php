@@ -13,11 +13,23 @@ class Autor extends Model
     protected $primaryKey = 'CodAu';
      
       protected $fillable = [
-        'nome'       
+        'nome',
+        'status'     
     ];
+
+    public function scopeAtivo($query)
+    {
+        return $query->where('status', 1);
+    }
 
     public function livros()
     {
         return $this->belongsToMany(Livro::class, 'livro_autor', 'Autor_CodAu', 'Livro_CodL');
+    }
+
+    public function delete()
+    {        
+        $this->status = 0;
+        return $this->save();
     }
 }
