@@ -4,7 +4,7 @@ use App\Http\Controllers\LivroController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\AssuntoController;
 use App\Http\Controllers\RelatorioController;
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');

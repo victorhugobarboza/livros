@@ -9,12 +9,14 @@ return [
             ],
 
             'routes' => [
+                'docs' => 'docs',
                 /*
                  * Route for accessing api documentation interface
                  */
                 'api' => 'api/documentation',
             ],
             'paths' => [
+                'docs' => storage_path('api-docs'),
                 /*
                  * Edit to include full URL in ui for assets
                  */
@@ -40,6 +42,7 @@ return [
                  */
                 'annotations' => [
                     base_path('app'),
+                    base_path('routes')
                 ],
             ],
         ],

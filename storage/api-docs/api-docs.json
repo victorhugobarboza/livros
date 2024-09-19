@@ -1,8 +1,11 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API de Relatorio",
-        "description": "Documentação da API de Relatorio",
+        "title": "API de Exemplo",
+        "description": "Documentação da API de Exemplo",
+        "contact": {
+            "email": "contato@exemplo.com"
+        },
         "version": "1.0.0"
     },
     "paths": {
@@ -17,6 +20,145 @@
                 "responses": {
                     "200": {
                         "description": "Lista de assuntos obtida com sucesso"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Cria um novo assunto",
+                "description": "Adiciona um novo assunto ao sistema",
+                "operationId": "b8fa920ffd6d925308c1dae6ba968f38",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "descricao"
+                                ],
+                                "properties": {
+                                    "descricao": {
+                                        "type": "string",
+                                        "example": "Novo Assunto"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Assunto criado com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/assunto/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Exibe o formulário de edição de um assunto",
+                "description": "Retorna o formulário para editar um assunto específico",
+                "operationId": "d34018d49a64be5fe3b3df70b6a76c7b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do assunto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Formulário de edição obtido com sucesso"
+                    },
+                    "404": {
+                        "description": "Assunto não encontrado"
+                    }
+                }
+            }
+        },
+        "/assunto/{id}": {
+            "put": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Atualiza um assunto",
+                "description": "Atualiza os dados de um assunto existente",
+                "operationId": "06070c494db2147f720c5ed371726292",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do assunto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "descricao"
+                                ],
+                                "properties": {
+                                    "descricao": {
+                                        "type": "string",
+                                        "example": "Descrição Atualizada"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Assunto atualizado com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Exclui um assunto",
+                "description": "Exclui logicamente um assunto (status = 0) se não estiver vinculado a um livro ativo",
+                "operationId": "50c68d4b11cd2888e8093f42d565e190",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do assunto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assunto excluído com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro ao tentar excluir"
                     }
                 }
             }
@@ -34,6 +176,145 @@
                         "description": "Lista de autores obtida com sucesso"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Cria um novo autor",
+                "description": "Adiciona um novo autor ao sistema",
+                "operationId": "0986b88c2754eff0cd08a002d36ee5aa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Novo Autor"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Autor criado com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/autor/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Exibe o formulário de edição de um autor",
+                "description": "Retorna o formulário para editar um autor específico",
+                "operationId": "924dec31b54115c670c52db2f2c80e5e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do autor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Formulário de edição obtido com sucesso"
+                    },
+                    "404": {
+                        "description": "Autor não encontrado"
+                    }
+                }
+            }
+        },
+        "/autor/{id}": {
+            "put": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Atualiza um autor",
+                "description": "Atualiza os dados de um autor existente",
+                "operationId": "aacc0668c2b2bd3b0383e9d83cf95e5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do autor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Nome Atualizado"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Autor atualizado com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Exclui um autor",
+                "description": "Exclui logicamente um autor (status = 0) se não estiver vinculado a um livro ativo",
+                "operationId": "c7a7f0eea6605d70dd3e003039bd8c3b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do autor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Autor excluído com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro ao tentar excluir"
+                    }
+                }
             }
         },
         "/livros": {
@@ -49,6 +330,238 @@
                         "description": "Lista de livros obtida com sucesso"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Cria um novo livro",
+                "description": "Cria um novo livro e vincula autores e assuntos",
+                "operationId": "052dc25bf67cc3710e476ca8c1f49397",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "titulo",
+                                    "editora",
+                                    "edicao",
+                                    "anoPublicacao",
+                                    "valor",
+                                    "autor",
+                                    "assunto"
+                                ],
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string",
+                                        "example": "Livro Exemplo"
+                                    },
+                                    "editora": {
+                                        "type": "string",
+                                        "example": "Editora Exemplo"
+                                    },
+                                    "edicao": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "anoPublicacao": {
+                                        "type": "string",
+                                        "example": "2024"
+                                    },
+                                    "valor": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "59.90"
+                                    },
+                                    "autor": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "assunto": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Livro criado com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/livros/{id}": {
+            "put": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Atualiza um livro",
+                "description": "Atualiza as informações de um livro existente",
+                "operationId": "34f924b16d17d726283baad63b144290",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do livro",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "titulo",
+                                    "editora",
+                                    "edicao",
+                                    "anoPublicacao",
+                                    "valor",
+                                    "autor",
+                                    "assunto"
+                                ],
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string",
+                                        "example": "Livro Atualizado"
+                                    },
+                                    "editora": {
+                                        "type": "string",
+                                        "example": "Editora Atualizada"
+                                    },
+                                    "edicao": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "anoPublicacao": {
+                                        "type": "string",
+                                        "example": "2024"
+                                    },
+                                    "valor": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "79.90"
+                                    },
+                                    "autor": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "assunto": {
+                                        "type": "integer",
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Livro atualizado com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Exclui um livro",
+                "description": "Exclui logicamente um livro (status = 0) e atualiza seus vínculos",
+                "operationId": "20ff1e31d004d5d38f9e8c62a3568b1f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do livro",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Livro excluído com sucesso"
+                    },
+                    "400": {
+                        "description": "Erro ao tentar excluir"
+                    }
+                }
+            }
+        },
+        "/relatorios": {
+            "get": {
+                "tags": [
+                    "relatorio"
+                ],
+                "summary": "Página inicial de relatórios",
+                "description": "Retorna a tela de escolha de relatórios",
+                "operationId": "adef994e0c07e14cb1a198e73a68ac39",
+                "responses": {
+                    "200": {
+                        "description": "Tela de relatórios exibida com sucesso"
+                    }
+                }
+            }
+        },
+        "/relatorios/livros-autores": {
+            "get": {
+                "tags": [
+                    "relatorio"
+                ],
+                "summary": "Gera relatório de livros por autor",
+                "description": "Retorna um relatório PDF dos livros agrupados por autores",
+                "operationId": "1d40b8fc3c384d3ae73ad9df299b96b5",
+                "responses": {
+                    "200": {
+                        "description": "Relatório de livros por autor gerado com sucesso"
+                    }
+                }
+            }
+        },
+        "/relatorios/livros-assuntos": {
+            "get": {
+                "tags": [
+                    "relatorio"
+                ],
+                "summary": "Gera relatório de livros por assunto",
+                "description": "Retorna um relatório PDF dos livros agrupados por assuntos",
+                "operationId": "8fcceadacb2a29f41c65844fba62ced0",
+                "responses": {
+                    "200": {
+                        "description": "Relatório de livros por assunto gerado com sucesso"
+                    }
+                }
+            }
+        },
+        "/relatorios/livros-ativos": {
+            "get": {
+                "tags": [
+                    "relatorio"
+                ],
+                "summary": "Gera relatório de livros ativos",
+                "description": "Retorna um relatório PDF dos livros ativos",
+                "operationId": "86e064956dbeeb28afc66ee0ca4fb896",
+                "responses": {
+                    "200": {
+                        "description": "Relatório de livros ativos gerado com sucesso"
+                    }
+                }
             }
         }
     },
@@ -62,8 +575,12 @@
             "description": "Operações sobre autor"
         },
         {
+            "name": "relatorio",
+            "description": "Operações sobre relatórios"
+        },
+        {
             "name": "Livros",
-            "description": "Operações sobre livros"
+            "description": "Livros"
         }
     ]
 }
